@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 
 import { Book, IBook, IBookStore, } from '../../store';
+import BookDetails from '../BookDetails'
 
 interface IBooksListProps {
 	store?: IBookStore
@@ -24,7 +25,7 @@ export default class BooksList extends Component<IBooksListProps> {
 			store.addBook(Book.create({
 				id: 0,
 				name: bookName,
-				isRead: bookStatus
+				isRead: !!bookStatus
 			}) as IBook)
 		}
 
@@ -50,12 +51,12 @@ export default class BooksList extends Component<IBooksListProps> {
 
 		return (
 			<div>
-				{/*<ul>*/}
-				{/*	{books.map((project) => <ProjectDetails*/}
-				{/*		key={project.id}*/}
-				{/*		project={project}*/}
-				{/*		onDeletion={this.deleteProject}/>)}*/}
-				{/*</ul>*/}
+				<ul>
+					{store && store.books.map((book) => <BookDetails
+						key={book.id}
+						book={book}
+						onDeletion={this.deleteBook} />)}
+				</ul>
 				<div>
 					<label>Project Name:
 						<input name="bookName"
