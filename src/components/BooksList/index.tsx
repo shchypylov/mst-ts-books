@@ -28,7 +28,6 @@ export default class BooksList extends Component<IBooksListProps> {
 				isRead: !!bookStatus
 			}) as IBook)
 		}
-
 	};
 
 	deleteBook = (id: number): void => {
