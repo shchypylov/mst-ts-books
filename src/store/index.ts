@@ -63,4 +63,4 @@ const bookStore = BookStore.create({
 
 export {Book, BookStore}
 
-export default BookStore
+export default bookStore
